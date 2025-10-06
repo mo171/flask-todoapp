@@ -56,18 +56,6 @@
     </main>
 
  
-    
-    <script>
-      // Auto-dismiss after 3 seconds
-      setTimeout(() => {
-        document.querySelectorAll('[id^="flash-"]').forEach(el => {
-          el.style.opacity = '0';
-          setTimeout(() => el.remove(), 300);
-        });
-      }, 3000);
-    </script>
-  {% endif %}
-{% endwith %}
 
     <footer class="bg-gray-800 dark:bg-gray-900 text-white p-4 text-center mt-8">
         <div class="container mx-auto">
