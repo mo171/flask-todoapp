@@ -32,6 +32,26 @@
         {% block body %}{% endblock %}
     </main>
 
+        {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div id="flash-{{ loop.index }}" class="fixed top-4 right-4 bg-{{ 'green' if category == 'success' else 'red' }}-500 text-white px-6 py-4 rounded-lg shadow-lg z-50">
+        {{ message }}
+      </div>
+    {% endfor %}
+    
+    <script>
+      // Auto-dismiss after 3 seconds
+      setTimeout(() => {
+        document.querySelectorAll('[id^="flash-"]').forEach(el => {
+          el.style.opacity = '0';
+          setTimeout(() => el.remove(), 300);
+        });
+      }, 3000);
+    </script>
+  {% endif %}
+{% endwith %}
+
     <footer class="bg-gray-800 dark:bg-gray-900 text-white p-4 text-center mt-8">
         <div class="container mx-auto">
             <p>&copy; 2025 My Todo App. All rights reserved.</p>
